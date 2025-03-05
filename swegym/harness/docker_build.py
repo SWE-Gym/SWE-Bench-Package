@@ -6,18 +6,18 @@ import traceback
 import docker
 import docker.errors
 from tqdm import tqdm
-from swegymnt.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 USE_HOST_NETWORK = False
 
 from swegym.harness.constants import (
     BASE_IMAGE_BUILD_DIR,
-    Eswegym_BUILD_DIR,
+    ENV_IMAGE_BUILD_DIR,
     INSTANCE_IMAGE_BUILD_DIR,
     MAP_REPO_VERSION_TO_SPECS,
 )
 from swegym.harness.test_spec import (
-    gswegymspecs_from_dataset,
+    get_test_specs_from_dataset,
     make_test_spec,
     TestSpec
 )
